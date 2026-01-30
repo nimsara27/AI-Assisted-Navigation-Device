@@ -15,7 +15,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
-        // Add ABI filters for PyTorch support
+
         ndk {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
         }
@@ -38,12 +38,6 @@ android {
     packaging {
         jniLibs {
             pickFirsts += listOf(
-                "**/libc++_shared.so",
-                "**/libfbjni.so", 
-                "**/libpytorch_jni.so",
-                "**/libpytorch_jni_lite.so",
-                "**/libpytorch_vision_jni.so",
-                "**/libimage_processing_util_jni.so"
             )
         }
     }
@@ -75,7 +69,10 @@ dependencies {
     implementation("androidx.camera:camera-camera2:1.3.0")
     implementation("androidx.camera:camera-lifecycle:1.3.0")
     implementation("androidx.camera:camera-view:1.3.0")
+    implementation("com.google.ai.client.generativeai:generativeai:0.1.2")
+    implementation("com.google.guava:guava:31.1-android")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }
